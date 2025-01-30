@@ -40,7 +40,17 @@
 
 <details>
     <summary> Blink </summary>
-<br>
+
+##### Release v1.0
+
+> [Artigo no Medium: Como piscar um LED utilizando BananaPi e Python via SSH](https://medium.com/@henriqueotogami/como-piscar-um-led-utilizando-bananapi-e-python-via-ssh-5519aed8567f)
+
+Arquivos:
+
+- fritzing/Blink.fzz
+- python/blink.py
+- shell/Blink.sh
+- shell/SendBlink.sh
 
 <hr>
 </details>
