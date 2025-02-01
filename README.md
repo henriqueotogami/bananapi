@@ -3,7 +3,7 @@
 ## BananaPi M2 Zero
 ### Henrique Otogami
 #### Início: 26-01-2025
-##### Readme versão 1.0
+##### Readme versão 1.1
 
 </div>
 <br>
@@ -12,13 +12,18 @@
 </div>
 <br>
 <div align="center">
-<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/henriqueotogami/bananapi">
+<img src="https://img.shields.io/github/release-date/henriqueotogami/bananapi">
 </div>
 <br>
 <div align="center">
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/henriqueotogami/bananapi">
+<img src="https://img.shields.io/github/checks-status/henriqueotogami/bananapi/main">
 <img src="https://img.shields.io/github/issues/henriqueotogami/bananapi">
-<img src="https://img.shields.io/github/forks/henriqueotogami/bananapi">
-<img src="https://img.shields.io/github/stars/henriqueotogami/bananapi">
+</div>
+<br>
+<div align="center">
+<img src="https://img.shields.io/github/forks/henriqueotogami/bananapi?style=flat">
+<img src="https://img.shields.io/github/stars/henriqueotogami/bananapi?style=flat">
 <img src="https://img.shields.io/github/license/henriqueotogami/bananapi">
 </div>
 <br>
