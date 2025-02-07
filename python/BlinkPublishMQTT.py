@@ -67,15 +67,18 @@ def export_gpio():
     get_gpio7_direction = 'direction'
     error_message = "\nErro ao ler a direção do pino GPIO7"
     gpio7_direction = read_gpio(get_gpio7_direction, error_message)
+    print("\nGPIO7 direction = " + gpio7_direction)
 
     # Verificação da disponibilização do pino GPIO7
-    if(gpio7_direction == "NONE"): 
-        print("\nPino não disponível para uso")
+    is_already_gpio_exported = gpio7_direction != "NONE"
+    if(is_already_gpio_exported): 
+        print("\nPino exportado anteriormente e disponível para uso")
     else:
         # Disponibilização do pino do LED para utilização
         os.system('sudo echo 7 > /sys/class/gpio/export')
         os.system('sudo echo out > /sys/class/gpio/gpio7/direction')
         print("\nPino agora exportado e disponível para uso")
+
 
 # ================================================================
 
@@ -124,6 +127,14 @@ def send_and_read_message(client, is_led_on_or_off):
 
 # ================================================================
 
+def unexport_gpio():
+    """Deporta o pino do GPIO7"""
+    # Disponibilização do pino do LED para utilização
+    os.system('sudo echo 7 > /sys/class/gpio/unexport')
+    print("\nPino deportado e indisponível para uso")
+
+# ================================================================
+
 def main():
     """
     Método principal para ligar ou desligar um led e notificar o Broker HiveMQ no protocolo MQTT.
@@ -143,7 +154,12 @@ def main():
     if(sys.platform == "linux"):
         print("\nLinux foi identificado")
         export_gpio()
-            
+
+        get_gpio7_direction = 'direction'
+        error_message = "\nErro ao ler a direção do pino GPIO7"
+        gpio7_direction = read_gpio(get_gpio7_direction, error_message)
+        print("\nGPIO7 direction = " + gpio7_direction)
+        
         while(True):
             # Usuário informa se vai acender ou apagar o LED ou se vai sair do loop
             print("\nDigite 1 (ligar LED) | 0 (desligar LED) | quit (encerrar)")
@@ -157,6 +173,9 @@ def main():
             is_led_on_or_off = read_gpio(get_gpio7_value, error_message)
 
             send_and_read_message(client, is_led_on_or_off)
+
+
+        unexport_gpio()
     else:
         print("\nSistema operacional = " + sys.platform)
         print("\nImplementação suporta apenas o Linux")    
