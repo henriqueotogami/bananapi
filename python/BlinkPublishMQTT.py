@@ -18,10 +18,8 @@ client_url = "your_url_here"
 client_port     = 8883
 
 device_id       = f'bananapi-{random.randint(0,100)}'
-# device_id       = "bananapi-77"
 target_topic    = "bananapi"
 topic_qos       = 0
-# message         = "Enviando mensagem do script python"
 
 # Callback para conexão
 def on_connect(client, userdata, flags, rc):
