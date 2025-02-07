@@ -12,9 +12,9 @@ import subprocess
 client_api      = mqtt.CallbackAPIVersion.VERSION2
 client_protocol = mqtt.MQTTv31
 client_security = mqtt.ssl.PROTOCOL_TLS
-client_username = "henriqueotogami"
-client_password = "foxveb-medzyN-4faqsu"
-client_url = "a8e2e0370f1440c98baa28fb14edc0d0.s1.eu.hivemq.cloud"
+client_username = "your_username_here"
+client_password = "your_password_here"
+client_url = "your_url_here"
 client_port     = 8883
 device_id       = f'bananapi-{random.randint(0,100)}'
 target_topic    = "bananapi"
