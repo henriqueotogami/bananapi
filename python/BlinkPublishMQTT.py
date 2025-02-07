@@ -1,7 +1,6 @@
 import paho.mqtt.client as mqtt
 import random
 import sys
-import os
 import subprocess
 
 # Henrique Otogami - 06/02/2025
@@ -75,9 +74,12 @@ def export_gpio():
         print("\nPino exportado anteriormente e disponível para uso")
     else:
         # Disponibilização do pino do LED para utilização
-        os.system('sudo echo 7 > /sys/class/gpio/export')
-        os.system('sudo echo out > /sys/class/gpio/gpio7/direction')
-        print("\nPino agora exportado e disponível para uso")
+        try:
+            subprocess.run('sudo echo 7 > /sys/class/gpio/export', shell=True, check=True)
+            subprocess.run('sudo echo out > /sys/class/gpio/gpio7/direction', shell=True, check=True)
+            print("\nPino agora exportado e disponível para uso")
+        except:
+            print("\nFalha na exportação do pino de GPIO7")
 
 
 # ================================================================
@@ -87,7 +89,10 @@ def switch_gpio(switch_led):
     # Formatação do comando shell para acender ou apagar o LED
     turn_on_or_off = "1" if switch_led == "1" else "0"
     set_gpio7_value = 'sudo echo ' + str(turn_on_or_off) + ' > /sys/class/gpio/gpio7/value'
-    os.system(set_gpio7_value)
+    try:
+        subprocess.run(set_gpio7_value, shell=True, check=True)
+    except:
+        print("\nFalha no acionamento do pino de GPIO7")
 
 # ================================================================
 
@@ -130,8 +135,12 @@ def send_and_read_message(client, is_led_on_or_off):
 def unexport_gpio():
     """Deporta o pino do GPIO7"""
     # Disponibilização do pino do LED para utilização
-    os.system('sudo echo 7 > /sys/class/gpio/unexport')
-    print("\nPino deportado e indisponível para uso")
+    try:
+        subprocess.run('sudo echo 7 > /sys/class/gpio/unexport', shell=True, check=True)
+        print("\nPino deportado e indisponível para uso")
+    except:
+        print("\nFala na deportação do pino de GPIO7")
+
 
 # ================================================================
 
