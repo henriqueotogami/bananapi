@@ -3,7 +3,7 @@
 ## BananaPi M2 Zero
 ### Henrique Otogami
 #### Início: 26-01-2025
-##### Readme versão 1.1
+##### Readme versão 1.2
 
 </div>
 <br>
@@ -37,29 +37,11 @@
 <hr>
 
 ### Sumário
-- [x] Piscar unm LED
 
-<hr>
+> Cada desafio abaixo foi documentado na Wiki deste repositório.
 
-### Resumos
-
-<details>
-    <summary> Blink </summary>
-
-##### Release v1.0
-
-> [Artigo no Medium: Como piscar um LED utilizando BananaPi e Python via SSH](https://medium.com/@henriqueotogami/como-piscar-um-led-utilizando-bananapi-e-python-via-ssh-5519aed8567f)
-
-Arquivos:
-
-- fritzing/Blink.fzz
-- python/blink.py
-- shell/Blink.sh
-- shell/SendBlink.sh
-
-<hr>
-</details>
-
+- [x] [Desafio 01 - Piscar um LED na BananaPi utilizando Python via SSH](https://github.com/henriqueotogami/bananapi/wiki/Desafio-01-%E2%80%90-Piscar-um-LED-na-BananaPi-utilizando-Python-via-SSH)
+- [x] Desafio 02 - Notificar o acionamento do LED utilizando Python para um Web Client MQTT
 
 <hr>
 
