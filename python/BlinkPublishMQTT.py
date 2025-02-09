@@ -3,7 +3,9 @@ import random
 import sys
 import subprocess
 import os
-from dotenv import load_dotenv
+import time
+from dotenv   import load_dotenv
+from datetime import datetime
 
 # Henrique Otogami - 06/02/2025
 # https://github.com/henriqueotogami/bananapi
@@ -55,7 +57,7 @@ def start_client() -> mqtt.Client:
 
 def print_header(device_id, target_topic, client, connection):
     """Imprime o cabeçalho com as informações de conexão"""
-    print("\nMQTT - Publisher - Início")
+    print("\nMQTT - Publisher - Início | " + datetime.now().strftime("%Y-%m-%d %H:%M %p"))
     print("\nDevice ID = "  + str(device_id))
     print("\nTopic = "      + str(target_topic))
     print("\nClient = "     + str(client.socket()))
@@ -81,7 +83,10 @@ def export_gpio() -> bool:
         print("\nPino exportado anteriormente")
         unexport_gpio()
     
-    retries = range(0,9)
+    # Por alguma razão, mesmo deportando a gpio, parece que ela fica presa
+    # Testei valores dentro desse intervalo de 20 retentativas
+    # E não achei um valor aceitável de retentativas
+    retries = range(0,20)
     # Disponibilização do pino do LED para utilização
     for index in retries:
         try:
@@ -92,7 +97,12 @@ def export_gpio() -> bool:
         except:
             print("\nFalha na exportação do pino de GPIO7. Retentativa = " + str(index))
             unexport_gpio()
-            if(index == 9): return False
+            # time.sleep(1)
+            if(index > 20): 
+                print("\nRetentativas excedidas")
+                return False
+
+    return False
 
 
 # ================================================================
@@ -135,6 +145,7 @@ def send_and_read_message(client, is_led_on_or_off):
     """
     # Formatação da mensagem para o Broker
     message_to_broker = "led on" if is_led_on_or_off == "1" else "led off"
+    message_to_broker = message_to_broker + str(" | ") + datetime.now().strftime("%Y-%m-%d %H:%M %p")
 
     # Envio da mensagem e Resposta do Broker
     answer = client.publish(topic = target_topic, payload = message_to_broker, qos = topic_qos, retain = True)
@@ -175,8 +186,13 @@ def main():
     # Identificação do sistema operacional
     if(sys.platform == "linux"):
         print("\nLinux foi identificado")
-        client.publish(topic = target_topic, payload = "Iniciando sistema", qos = topic_qos, retain = True)
-        export_gpio()
+        message_start_system = "Iniciando sistema | " + datetime.now().strftime("%Y-%m-%d %H:%M %p")
+        client.publish(topic = target_topic, payload = message_start_system, qos = topic_qos, retain = True)
+        
+        is_exported_gpio = export_gpio()
+        if(is_exported_gpio == False):
+            print("\nEncerrando sistema. Equipamento sem acesso a GPIO.")
+            return
 
         get_gpio7_direction = 'direction'
         error_message = "\nErro ao ler a direção do pino GPIO7"
@@ -199,14 +215,16 @@ def main():
 
 
         unexport_gpio()
-        client.publish(topic = target_topic, payload = "Finalizando sistema", qos = topic_qos, retain = True)
+
     else:
         print("\nSistema operacional = " + sys.platform)
         print("\nImplementação suporta apenas o Linux")
 
     
-    client.publish(topic = target_topic, payload = "Finalizando sistema", qos = topic_qos, retain = True)
-    print("\nMQTT - Publisher - Fim")
+
+    message_finish_system = "Finalizando sistema | " + datetime.now().strftime("%Y-%m-%d %H:%M %p")
+    client.publish(topic = target_topic, payload = message_finish_system, qos = topic_qos, retain = True)
+    print("\nMQTT - Publisher - Fim | " + datetime.now().strftime("%Y-%m-%d %H:%M %p"))
 
 # ============================================================================
 # Se o código for executado diretamente -> __name__ será "__main__"
