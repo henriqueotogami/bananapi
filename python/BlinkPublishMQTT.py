@@ -2,6 +2,8 @@ import paho.mqtt.client as mqtt
 import random
 import sys
 import subprocess
+import os
+from dotenv import load_dotenv
 
 # Henrique Otogami - 06/02/2025
 # https://github.com/henriqueotogami/bananapi
@@ -11,9 +13,14 @@ import subprocess
 client_api      = mqtt.CallbackAPIVersion.VERSION2
 client_protocol = mqtt.MQTTv31
 client_security = mqtt.ssl.PROTOCOL_TLS
-client_username = "your_username_here"
-client_password = "your_password_here"
-client_url = "your_url_here"
+
+# Para utilizar o sistema de credenciais abaixo, é necessário criar o arquivo .env
+load_dotenv()
+
+client_username = os.getenv("MQTT_CLIENT_USERNAME")
+client_password = os.getenv("MQTT_CLIENT_PASSWORD")
+client_url      = os.getenv("MQTT_CLIENT_URL")
+
 client_port     = 8883
 device_id       = f'bananapi-{random.randint(0,100)}'
 target_topic    = "bananapi"
@@ -56,7 +63,7 @@ def print_header(device_id, target_topic, client, connection):
 
 # ================================================================
 
-def export_gpio():
+def export_gpio() -> bool:
     """
     Consulta a disponibilidade do pino de GPIO7 com base na leitura da direção do pino.
 
@@ -71,15 +78,21 @@ def export_gpio():
     # Verificação da disponibilização do pino GPIO7
     is_already_gpio_exported = gpio7_direction != "NONE"
     if(is_already_gpio_exported): 
-        print("\nPino exportado anteriormente e disponível para uso")
-    else:
-        # Disponibilização do pino do LED para utilização
+        print("\nPino exportado anteriormente")
+        unexport_gpio()
+    
+    retries = range(0,9)
+    # Disponibilização do pino do LED para utilização
+    for index in retries:
         try:
             subprocess.run('sudo echo 7 > /sys/class/gpio/export', shell=True, check=True)
             subprocess.run('sudo echo out > /sys/class/gpio/gpio7/direction', shell=True, check=True)
             print("\nPino agora exportado e disponível para uso")
+            return True
         except:
-            print("\nFalha na exportação do pino de GPIO7")
+            print("\nFalha na exportação do pino de GPIO7. Retentativa = " + str(index))
+            unexport_gpio()
+            if(index == 9): return False
 
 
 # ================================================================
@@ -156,12 +169,13 @@ def main():
     - Encerrar script = quit
     """
     client = start_client()
-    connection = client.connect(host = client_url, port = client_port)
+    connection = client.connect(host = client_url, port = client_port) # type: ignore
     print_header(device_id, target_topic, client, connection)
 
     # Identificação do sistema operacional
     if(sys.platform == "linux"):
         print("\nLinux foi identificado")
+        client.publish(topic = target_topic, payload = "Iniciando sistema", qos = topic_qos, retain = True)
         export_gpio()
 
         get_gpio7_direction = 'direction'
@@ -185,10 +199,13 @@ def main():
 
 
         unexport_gpio()
+        client.publish(topic = target_topic, payload = "Finalizando sistema", qos = topic_qos, retain = True)
     else:
         print("\nSistema operacional = " + sys.platform)
-        print("\nImplementação suporta apenas o Linux")    
+        print("\nImplementação suporta apenas o Linux")
 
+    
+    client.publish(topic = target_topic, payload = "Finalizando sistema", qos = topic_qos, retain = True)
     print("\nMQTT - Publisher - Fim")
 
 # ============================================================================
