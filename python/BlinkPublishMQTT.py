@@ -129,8 +129,10 @@ class BlinkPublishMQTT:
         set_gpio7_value = 'sudo echo ' + str(turn_on_or_off) + ' > /sys/class/gpio/gpio7/value'
         try:
             subprocess.run(set_gpio7_value, shell=True, check=True)
-        except:
+        except subprocess.CalledProcessError as exception:
             print("\nFalha no acionamento do pino de GPIO7")
+        except Exception as exception:
+            print(f"\nErro inesperado : {exception}")
 
 # ================================================================
 
@@ -145,8 +147,10 @@ class BlinkPublishMQTT:
         try:
             read_gpio7 = subprocess.check_output(get_gpio7, shell=True, text=True).strip()
             print("\nO valor do GPIO7 é: " + read_gpio7)
-        except subprocess.CalledProcessError as e:
+        except subprocess.CalledProcessError as exception:
             print(error_message)
+        except Exception as exception:
+            print(f"\nErro inesperado : {exception}")
         finally:
             return read_gpio7
 
@@ -177,8 +181,10 @@ class BlinkPublishMQTT:
         try:
             subprocess.run('sudo echo 7 > /sys/class/gpio/unexport', shell=True, check=True)
             print("\nPino deportado e indisponível para uso")
-        except:
+        except subprocess.CalledProcessError as exception:
             print("\nFalha na deportação do pino de GPIO7")
+        except Exception as exception:
+            print(f"\nErro inesperado : {exception}")
 
 # ============================================================================
     def run_bananapi(self, blink, client):
