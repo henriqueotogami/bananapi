@@ -45,6 +45,23 @@
 
 <hr>
 
+## 📝 Leia meus artigos
+
+### [Artigos no Medium](https://medium.com/@henriqueotogami)
+### [Artigos no Dev.to](https://dev.to/henriqueotogami)
+
+<br>
+
+## 💼 Conecte-se comigo
+### [Perfil no LinkedIn](https://www.linkedin.com/in/henrique-matheus-alves-pereira)
+
+<br>
+
+## 🙏🏻 Apoie meu conteúdo
+### [Compre-me um cafézinho | Buy me a coffee](https://ko-fi.com/henriqueotogami) ☕
+
+<hr>
+
 ### Créditos
 - [x] [Foto de capa by Clay Banks | Unsplash - Photos for everyone](https://unsplash.com/photos/oO6Gm16Cqcg)
 - [x] [Shields.io | Badges Info from Github](https://img.shields.io)
