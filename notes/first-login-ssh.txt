@@ -1,0 +1,52 @@
+08/05/2025
+
+Acabei de reinstalar o raspbian na BananaPi
+
+https://www.raspberrypi.com/documentation/computers/remote-access.html#ssh
+
+
+~ 
+> ssh pi@banana.local
+
+The authenticity of host 'banana.local (2804:31b4:910f:9a00:b403:77a1:4acd:1b5)' can't be established.
+ED25519 key fingerprint is SHA256:/RZBasiXW+IAdlkuO719ln5+1seRyrzYJ0uHSFjzgPA.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:4: bananapi-zero.local
+    ~/.ssh/known_hosts:6: bpi-iot-ros-ai.local
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+
+Warning: Permanently added 'banana.local' (ED25519) to the list of known hosts.
+pi@banana.local's password: 
+
+Linux banana 4.4.55-BPI-M2Z-Kernel #1 SMP PREEMPT Fri Apr 10 16:05:55 HKT 2020 armv7l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Fri Apr 25 09:07:27 2025
+pi@banana:~ $ 
+
+
+
+- Issue #3 no https://github.com/henriqueotogami/bananapi/issues/3
+- Habilitar o SSH no raspberrypi
+
+# Descobrir o IP
+- Enviar o comando no terminal $ ifconfig
+- Descobri que o IP da wlan0 é 192.168.100.27
+
+# Verificar se o Apache está rodando
+- enviar o comando no terminal $ ps -ef | grep apache
+- Retornou $ pi        2175  2084  0 09:13 pts/0    00:00:00 grep --color=auto apache
+
+# Verificar se o linux está atualizado
+- enviar o comando no terminal $ sudo apt-get update
+
+# Instalar o Apache e o PHP
+- enviar o comando no terminal $ sudo apt-get install apache2 php libapache2-mod-php
+
+# Verificar se o Apache está rodando
+- enviar o comando no terminal $ ps -ef | grep -i apache
