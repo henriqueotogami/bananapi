@@ -50,3 +50,33 @@ pi@banana:~ $
 
 # Verificar se o Apache está rodando
 - enviar o comando no terminal $ ps -ef | grep -i apache
+
+# Teve falha na instalação, mas consegui atualizar o ambiente com os comandos abaixo:
+- enviar o comando no terminal $ sudo apt-get update
+- enviar o comando no terminal $ sudo apt-get upgrade
+- salvei o log dessa atualizacao
+
+# Falhou na instalação dos dois modos
+- enviar o comando no terminal $ sudo apt-get install apache2 php libapache2-mod-php
+- enviar o comando no terminal $ sudo apt-get install apache2 -y
+- salvei o log dessa falha
+
+# Pelo que entendi, o raspberry está tentando utilizar o IPv6, mas o IPv4 deve funcionar
+- enviar o comando no terminal $ sudo nano /etc/apt/apt.conf.d/99force-ipv4
+- Copiar e colar a linha: Acquire::ForceIPv4 "true";
+ou 
+- enviar o comando no terminal $ sudo apt-get -o Acquire::ForceIPv4=true update
+
+pi@banana:/etc/apt $ sudo nano apt.conf.d/
+pi@banana:/etc/apt $ ls -la
+total 40
+drwxr-xr-x   6 root root 4096 May 11 03:19 .
+drwxr-xr-x 111 root root 4096 May 10 12:02 ..
+-rw-r--r--   1 root root   26 May 11 03:19 99force-ipv4
+drwxr-xr-x   2 root root 4096 May 11 03:04 apt.conf.d
+-rw-r--r--   1 root root  104 Jun 27  2018 listchanges.conf
+drwxr-xr-x   2 root root 4096 Sep 14  2017 preferences.d
+-rw-r--r--   1 root root  237 Jun 27  2018 sources.list
+drwxr-xr-x   2 root root 4096 Jun 27  2018 sources.list.d
+-rw-r--r--   1 root root 2416 Jun 27  2018 trusted.gpg
+drwxr-xr-x   2 root root 4096 Sep 14  2017 trusted.gpg.d
