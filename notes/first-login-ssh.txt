@@ -80,3 +80,14 @@ drwxr-xr-x   2 root root 4096 Sep 14  2017 preferences.d
 drwxr-xr-x   2 root root 4096 Jun 27  2018 sources.list.d
 -rw-r--r--   1 root root 2416 Jun 27  2018 trusted.gpg
 drwxr-xr-x   2 root root 4096 Sep 14  2017 trusted.gpg.d
+
+# Henrique Otogami - 11-05-2025 - Comentei a linha debaixo
+# a distro strech mudou de endereco url para o legacy
+#
+#deb http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rpi
+# A linha debaixo tambem eh original
+# Uncomment line below then 'apt-get update' to enable 'apt-get source'
+#deb-src http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rpi
+#
+# nova url:
+deb http://legacy.raspbian.org/raspbian/ stretch main contrib non-free rpi
