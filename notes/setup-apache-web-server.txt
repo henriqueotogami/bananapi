@@ -91,3 +91,30 @@ drwxr-xr-x   2 root root 4096 Sep 14  2017 trusted.gpg.d
 #
 # nova url:
 deb http://legacy.raspbian.org/raspbian/ stretch main contrib non-free rpi
+
+===================================
+
+dia 15/05/2025
+
+# Mudar a página web padrão
+- enviar o comando no terminal $ cd /var/www/html
+- enviar o comando no terminal $ ls -la
+
+pi@banana:~ $ cd /var/www/html
+pi@banana:/var/www/html $ ls -la
+total 20
+drwxr-xr-x 2 root root  4096 May 12 08:41 .
+drwxr-xr-x 3 root root  4096 May 12 08:40 ..
+-rw-r--r-- 1 root root 10701 May 12 08:41 index.html
+
+# Localizar o arquivo index.html e apaga-lo
+- enviar o comando no terminal $ rm index.html
+
+# Criar o arquivo index.php
+- enviar o comando no terminal $ sudo nano index.php
+- escrever no arquivo: <?php phpinfo(); ?>
+
+# Acessar remotamente a página index.php
+- na barra de endereços do navegador, utilizar o número de IP/index.php -> http://192.168.100.27/index.php
+
+# a partir desse momento, o apache já está rodando no navegador
