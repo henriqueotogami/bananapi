@@ -1,0 +1,12 @@
+# Atualização de sistema
+- Enviar o comando no terminal $ sudo apt update && sudo apt upgrade -y
+
+# Verificar o python instalado
+- Enviar o comando no terminal $ python3 --version
+
+# Instalar as dependencias necessarias para compilar o python 3.10
+- Enviar o comando no terminal $ sudo apt install -y \
+  wget build-essential libssl-dev zlib1g-dev \
+  libncurses5-dev libncursesw5-dev libreadline-dev \
+  libsqlite3-dev libgdbm-dev libdb5.3-dev libbz2-dev \
+  libexpat1-dev liblzma-dev tk-dev libffi-dev uuid-dev libssl-dev openssl
