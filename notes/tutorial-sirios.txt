@@ -16,3 +16,6 @@
 sudo wget https://www.python.org/ftp/python/3.10.13/Python-3.10.13.tgz
 sudo tar xzf Python-3.10.13.tgz
 cd Python-3.10.13
+
+# Configurar e compilar o python3.10
+- Enviar o comando no terminal $ sudo ./configure --enable-optimizations
