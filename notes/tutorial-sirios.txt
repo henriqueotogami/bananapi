@@ -19,3 +19,6 @@ cd Python-3.10.13
 
 # Configurar e compilar o python3.10
 - Enviar o comando no terminal $ sudo ./configure --enable-optimizations
+
+# Compilar com todos os núcleos da CPU
+- Enviar o comando no terminal $ sudo make -j$(nproc)
