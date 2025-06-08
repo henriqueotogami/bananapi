@@ -22,3 +22,6 @@ cd Python-3.10.13
 
 # Compilar com todos os núcleos da CPU
 - Enviar o comando no terminal $ sudo make -j$(nproc)
+
+# Instale sem sobrescrever o Python do sistema:
+- Enviar o comando no terminal $ sudo make altinstall
