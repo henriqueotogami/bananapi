@@ -25,3 +25,6 @@ cd Python-3.10.13
 
 # Instale sem sobrescrever o Python do sistema:
 - Enviar o comando no terminal $ sudo make altinstall
+
+# Verificar se foi instalado
+- Enviar o comando no terminal $ python3.10 --version
