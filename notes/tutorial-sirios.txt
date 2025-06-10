@@ -28,3 +28,9 @@ cd Python-3.10.13
 
 # Verificar se foi instalado
 - Enviar o comando no terminal $ python3.10 --version
+
+# Criar a pasta do projeto
+- Enviar o comando no terminal $ mkdir sirios
+
+# Criar o ambiente virtual
+- Enviar o comando no terminal $ python3.10 -m venv venv
