@@ -34,3 +34,6 @@ cd Python-3.10.13
 
 # Criar o ambiente virtual
 - Enviar o comando no terminal $ python3.10 -m venv venv
+
+# Instalar o Flask
+- Enviar o comando no terminal $ pip3 install flask
