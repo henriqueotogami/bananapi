@@ -37,3 +37,6 @@ cd Python-3.10.13
 
 # Instalar o Flask
 - Enviar o comando no terminal $ pip3 install flask
+
+# Ativar o ambiente virtual
+- Enviar o comando no terminal $ source venv/bin/activate
