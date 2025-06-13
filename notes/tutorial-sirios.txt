@@ -40,3 +40,6 @@ cd Python-3.10.13
 
 # Ativar o ambiente virtual
 - Enviar o comando no terminal $ source venv/bin/activate
+
+# Criar o arquivo index
+- Enviar o comando no terminal $ mkdir sirios/index.html
