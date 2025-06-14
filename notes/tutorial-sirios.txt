@@ -43,3 +43,6 @@ cd Python-3.10.13
 
 # Criar o arquivo index
 - Enviar o comando no terminal $ mkdir sirios/index.html
+
+# Criar o arquivo css
+- Enviar o comando no terminal $ mkdir sirios/style.css
