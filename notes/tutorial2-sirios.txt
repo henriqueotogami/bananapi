@@ -1,0 +1,5 @@
+# Atualizando o ambiente
+Enviando no terminal o comando $ sudo apt update
+
+# instalando o apache
+Enviando no terminal o comando $ sudo apt install apache2
