@@ -3,3 +3,9 @@ Enviando no terminal o comando $ sudo apt update
 
 # instalando o apache
 Enviando no terminal o comando $ sudo apt install apache2
+
+# instalando o CGI
+Enviando no terminal o comando $ sudo a2enmod cgi
+
+# reiniciando o apache
+Enviando no terminal o comando $ sudo systemctl restart apache2
