@@ -9,3 +9,20 @@ Enviando no terminal o comando $ sudo a2enmod cgi
 
 # reiniciando o apache
 Enviando no terminal o comando $ sudo systemctl restart apache2
+
+# Criando o script para ligar a GPIO
+Enviando no terminal o comando $ sudo nano /usr/lib/cgi-bin/gpio_on.py
+
+====================================================================
+
+#!/usr/bin/env python3
+
+print("Content-type: text/html\n")
+
+import os
+os.system("gpio mode 7 out")
+os.system("gpio write 7 1")
+
+print("<html><body><h1>GPIO7 Ligado!</h1></body></html>")
+
+====================================================================
