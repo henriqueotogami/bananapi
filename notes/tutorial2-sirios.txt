@@ -26,3 +26,6 @@ os.system("gpio write 7 1")
 print("<html><body><h1>GPIO7 Ligado!</h1></body></html>")
 
 ====================================================================
+
+# Habilitando o script de acionamento da GPIO para ser executável
+Enviando no terminal o comando $ sudo chmod +x /usr/lib/cgi-bin/gpio_on.py
