@@ -29,3 +29,22 @@ print("<html><body><h1>GPIO7 Ligado!</h1></body></html>")
 
 # Habilitando o script de acionamento da GPIO para ser executável
 Enviando no terminal o comando $ sudo chmod +x /usr/lib/cgi-bin/gpio_on.py
+
+# Criando o script para desligar a GPIO
+Enviando no terminal o comando $ sudo nano /usr/lib/cgi-bin/gpio_off.py
+
+====================================================================
+
+#!/usr/bin/env python3
+
+print("Content-type: text/html\n")
+
+import os
+os.system("gpio write 7 0")
+
+print("<html><body><h1>GPIO7 Desligado!</h1></body></html>")
+
+====================================================================
+
+# Habilitando o script de desacionamento da GPIO para ser executável
+Enviando no terminal o comando $ sudo chmod +x /usr/lib/cgi-bin/gpio_off.py
