@@ -48,3 +48,27 @@ print("<html><body><h1>GPIO7 Desligado!</h1></body></html>")
 
 # Habilitando o script de desacionamento da GPIO para ser executável
 Enviando no terminal o comando $ sudo chmod +x /usr/lib/cgi-bin/gpio_off.py
+
+# Criando o arquivo de página web
+Enviando no terminal o comando $ sudo nano /var/www/html/index.html
+
+====================================================================
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SIRIOS - Controle de GPIO7</title>
+</head>
+<body>
+  <h1>Controle de GPIO7</h1>
+    <form action="/cgi-bin/gpio_on.py" method="get">
+        <button type="submit">Ligar GPIO7</button>
+    </form>
+
+    <form action="/cgi-bin/gpio_off.py" method="get">
+        <button type="submit">Desligar GPIO7</button>
+    </form>
+</body>
+</html>
+
+====================================================================
