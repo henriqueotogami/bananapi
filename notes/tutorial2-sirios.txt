@@ -168,3 +168,11 @@ body {
 }
 
 ====================================================================
+
+# Descobrindo o IP e Porta da Banana Pi
+pi@banana:~/sirios $ hostname -I
+192.168.100.42 2804:31b4:910f:9a00:b403:77a1:4acd:1b5 
+
+# Acessando a página web via navegador
+http://[IP_DA_BANANA_PI]/sirios/gpio_on.py
+http://192.168.100.42/sirios/gpio_on.py
