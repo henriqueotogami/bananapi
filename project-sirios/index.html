@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SIRIOS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="author">Henrique Otogami</div>
+    <div class="card">
+      <div class="header">
+        <h1>SIRIOS</h1>
+        <div class="gear-icon">⚙️</div>
+      </div>
+      <div class="button-group">
+        <form action="/cgi-bin/gpio_on.py" method="get">
+          <button class="led-button on">
+            Ligar o LED
+            <span class="led-indicator green"></span>
+          </button>
+        </form>
+        <form action="/cgi-bin/gpio_off.py" method="get">
+          <button class="led-button off">
+            Desligar o LED
+            <span class="led-indicator red"></span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
