@@ -5,7 +5,8 @@
 }
 
 body {
-  font-family: 'Georgia', serif;
+  font-family: "Avenir", "STIX Math", "Cambria Math", "Latin Modern Math", "Times New Roman", serif;
+  background-color: #F3F3F3;
 }
 
 .container {
@@ -17,13 +18,13 @@ body {
 }
 
 .author {
-  position: absolute;
-  left: 2%;
-  bottom: 50%;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   font-size: 1.2em;
   font-weight: bold;
+  text-align: left;
+  position: absolute;
+  left: 0;
 }
 
 .card {
@@ -45,18 +46,29 @@ body {
   font-size: 2.5em;
 }
 
+.subtitle {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 .gear-icon {
-  background: #f0f0f0;
-  padding: 10px;
+  background: #f0f0f0 url('logotipo-otogami.png') center center no-repeat;
+  background-size: cover;
   border-radius: 50%;
-  font-size: 1.5em;
   cursor: pointer;
+  width: 50px;
+  height: 50px;
 }
 
 .button-group {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.input {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .led-button {
@@ -68,15 +80,9 @@ body {
   padding: 15px 25px;
   border: none;
   border-radius: 12px;
+  color: #000000;
   background-color: #f3f3f7;
   cursor: pointer;
-}
-
-.led-indicator {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: inline-block;
 }
 
 .green {
@@ -85,4 +91,18 @@ body {
 
 .red {
   background-color: #f45d5d;
+}
+
+#output {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: darkblue;
+}
+
+iframe {
+  border-radius: 12px;
+  background-color: #f3f3f7;
+  padding: 15px 25px;
+  border: none;
 }

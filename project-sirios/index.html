@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>SIRIOS</title>
+  <link rel="icon" href="icon-otogami.svg">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,24 +14,21 @@
     <div class="card">
       <div class="header">
         <h1>SIRIOS</h1>
-        <div class="gear-icon">⚙️</div>
+        <a href="https://github.com/henriqueotogami" target="_blank"><div class="gear-icon"></div></a>
       </div>
+      <div class="subtitle"><h2>Sistema de Acionamento Remoto de LED</h2></div>
       <div class="button-group">
-        <form action="/cgi-bin/gpio_on.py" method="get">
-          <button class="led-button on">
-            Ligar o LED
-            <span class="led-indicator green"></span>
-          </button>
+        <div class= "input">
+        <form action="/cgi-bin/gpio_on.py" target="message_iframe" method="get">
+          <button type="submit" class="led-button"><p>Ligar</p></button>
         </form>
-        <form action="/cgi-bin/gpio_off.py" method="get">
-          <button class="led-button off">
-            Desligar o LED
-            <span class="led-indicator red"></span>
-          </button>
+        <form action="/cgi-bin/gpio_off.py" target="message_iframe" method="get">
+          <button type="submit" class="led-button">Desligar</button>
         </form>
+        </div>
+        <iframe name="message_iframe" onload="document.getElementById('output').innerHTML=this.contentDocument.body.innerHTML"></iframe>
       </div>
     </div>
   </div>
 </body>
-
-</html>
+</html> 
